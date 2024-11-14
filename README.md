@@ -1,4 +1,4 @@
 # Projet : Tests et performances sur des listes
 
-- [SimpleList](./SimpleList/coursSimpleList.pdf)
-- [LinkedList](./LinkedList/coursLinkedList.pdf)
+- [cours sur les SimpleList](./SimpleList/coursSimpleList.pdf)
+- [cours sur les LinkedList](./LinkedList/coursLinkedList.pdf)
