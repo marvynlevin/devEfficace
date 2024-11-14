@@ -1,0 +1,33 @@
+/* Applique un fond sombre et une police claire pour les blocs de code */
+pre, code {
+    background-color: #2d2d2d; /* Fond sombre pour le code */
+    color: #f8f8f2;            /* Texte clair */
+    font-family: 'Courier New', Courier, monospace;  /* Police monospaced */
+    font-size: 1em;            /* Taille de la police */
+    padding: 10px;             /* Espacement autour du code */
+    border-radius: 5px;        /* Coins arrondis */
+    line-height: 1.5;          /* Interligne pour une meilleure lisibilité */
+}
+
+/* Ajoute un effet de survol pour les éléments de code */
+pre:hover, code:hover {
+    background-color: #444; /* Change le fond au survol */
+    cursor: pointer;       /* Change le curseur pour montrer l'interaction */
+}
+
+/* Coloration syntaxique pour les différents éléments du code (exemples basiques) */
+code .keyword {
+    color: #cc7832;  /* Mots-clés en orange */
+}
+
+code .string {
+    color: #6a8759;  /* Chaînes de caractères en vert */
+}
+
+code .comment {
+    color: #808080;  /* Commentaires en gris */
+}
+
+code .variable {
+    color: #a9b7c6;  /* Variables en bleu clair */
+}
