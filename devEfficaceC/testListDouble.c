@@ -51,6 +51,9 @@ int main(int argc, char** argv) {
 // 0
 
 // marvyn@Marvyn:~/but/but2/s3/devEfficaceC$ ./testdouble
+// Liste après insertions :
 // <- 3 <-> 15 <-> 5 <-> 1 ->
+// Liste après suppressions :
 // <- 15 <-> 1 ->
+
 

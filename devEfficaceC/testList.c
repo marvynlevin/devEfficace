@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
     listPrint(l);           // Affiche : 15 -> 1 -> NULL
 
     // Libération de la mémoire
-    listFree(l);
+//    listFree(l);
     return 0;
 }
 
@@ -46,5 +46,9 @@ int main(int argc, char** argv) {
 // 0
 
 // marvyn@Marvyn:~/but/but2/s3/devEfficaceC$ ./testlist
+// Liste après insertion :
 // 3 -> 15 -> 5 -> 1 -> 5 -> NULL
+// Liste après suppression :
 // 15 -> 1 -> NULL
+
+

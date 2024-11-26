@@ -169,29 +169,32 @@ Cell* listRemoveDeprecated(List* l, int value) {
  */
 Cell* listRemove(List* l, int value) {
     if (l->head == NULL) {
-      	return NULL;
+        return NULL;
     } else {
         Cell* current = l->head;
         Cell* previous = NULL;
 
-        while ((current != NULL) && (current->value != value)) {
-          	previous = current;
-          	current = current->next;
+        while (current != NULL && current->value != value) {
+            previous = current;
+            current = current->next;
         }
+
         if (current == NULL) {
-        	return NULL;
-    	}
-        if (previous != NULL) {
-        	if (current == l->head) {
-                l->head = current->next;
-            } else {
-                previous->next = current->next;
-            }
-        l->size--;
-        return current;
+            return NULL;
         }
+
+        if (current == l->head) {
+            l->head = current->next;
+        } else {
+            previous->next = current->next;
+        }
+
+        l->size--;
+
+        return current;
     }
 }
+
 
 /**
  * @brief Affiche toutes les valeurs de la liste.
