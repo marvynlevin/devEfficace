@@ -1,5 +1,7 @@
 # Cours Developpement Efficace
 
+## Introduction aux Listes simples en Java
+
 En Java, on a une classe Cellule `Cell.java` qui représente une Cellule pour notre Liste
 
 ```bash
@@ -104,5 +106,91 @@ public Cell replace (int value, int index) {
     return c;
 }
 ```
+
+## Les Collections en Java
+
+- **Set** : ensemble d'objets non indicé, sans doublons
+- **List** : ensemble d'objets non indicé, éventuellement avec doublons
+- **Map** : ensemble associatif d'objets, non indicé, chaque objet étant associé à une clé
+    - Une clé est unique dans **Map** mais plusieurs clés peuvent être associées à un même objet.
+- **Queue** : ensemble d'objets, non indicé avec un schéma d'accès de type FIFO/LIFO
+    - **FIFO** : First In First out
+    - **LIFO** : Last In First Out
+
+Les piles sont souvent utilisés en programmation.
+
+En **réalité**, Set, List, Map et Queue sont des interfaces.
+
+En **pratique**, on utilise les implémentations HashSet, ArrayList, HashMap, ArrayDeque.
+Ces collections sont génériques : 
+```java
+// On ne peut pas écrire cela
+Set <int> set = new HashMap<int>();
+
+// On écrit plutôt cela
+Set <Integer> set = new HashMap<Integer>();
+Set <Integer> set = new HashMap<>();
+
+// ------------------
+// Methodes communes
+// ------------------
+// int size();
+// void clear();
+// boolean istemply();
+```
+
+**HashSet:**
+- **boolean add(E e)**: ajoute l'élement e de la classe E. Si E n'est pas de la classe (même classe) indiquée par constructeur, erreur compil. Renvoie vrai si l'insertion a lieu.
+- **boolean remove(Object o)**: enlève o s'il existe et renvoie true, sinon false, pas d'erreur de compil si o n'est pas de la même classe.
+- **boolean contains(Object o)**: 
+
+Exemple :
+
+```java
+public class A {}
+public class B extends A {}
+
+Set<A> set = new HashSet<>();
+
+set.add(new A());
+set.add(new A());
+set.add(new B());
+
+set.add(new Date()); // Cette ligne provoque erreur compil car Date pas enfant de A
+```
+
+**ArrayList:**
+- **boolean add(E e)**: ajoute en fin de liste.
+- **void add(int index, E e)**: insertion en index. Si index < 0 ou index > taille liste, ne fait rien et lève une exception.
+- **E get(int index)** : retourne l'élément à l'index spécifié.
+- **int indexOf(Object o)** : retourne l'index de la première occurrence de l'élément o, ou -1 si l'élément n'est pas trouvé.
+- **E remove(int index)** : supprime et retourne l'élément à l'index spécifié.
+
+Exemple :
+
+```java
+import java.util.ArrayList;
+
+public class A {}
+public class B extends A {}
+
+List<A> list = new ArrayList<>();
+A a1 = new A();
+A a2 = new A();
+Date d = new Date();
+
+list.add(a1);
+list.add(a2);
+list.add(d);
+list.add(15, a1); // Erreur d'éxecution
+
+A aa = null;
+aa = list.get(0); // aa référence le même objet que a1
+aa = list.remove(1); // aa référence le même objet que a2
+int pos = list.indexOf(a1); // Ok, renvoie 0
+pos = list.indexOf(d); // Ok, renvoie -1
+```
+
+
 
 
