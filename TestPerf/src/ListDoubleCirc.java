@@ -295,5 +295,7 @@ public class ListDoubleCirc {
         } while (current != head);
         System.out.println();
     }
-
 }
+
+// Pour générer la JavaDoc au format HTML
+//& "C:\Program Files\Java\jdk-17\bin\javadoc.exe" -d docs -encoding UTF-8 -docencoding UTF-8 -charset UTF-8 "CellDouble.java"
