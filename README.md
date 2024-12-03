@@ -8,3 +8,4 @@
 - [exercices sur les SimpleList](./SimpleList)
 - [exercices sut les LinkedList](./LinkedList)
 - [tests de performances sur API Java et mes propres arrays](./TestPerf)
+- [test sur les collections en Java List-HashMap -HashSet - Queue](./Collections)
