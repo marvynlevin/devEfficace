@@ -3,6 +3,7 @@
 ## Cours théorique
 - [cours sur les SimpleList](./SimpleList/coursSimpleList.pdf)
 - [cours sur les LinkedList](./LinkedList/coursLinkedList.pdf)
+- [cours général en dev efficace](./coursDevEfficace.md)
  
 ## Exercices pratique
 - [exercices sur les SimpleList](./SimpleList)
