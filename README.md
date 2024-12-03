@@ -1,8 +1,10 @@
 # Projet : Tests et performances sur différentes listes
 
 ## Cours théorique
-- [cours sur les SimpleList](./SimpleList/coursSimpleList.pdf)
-- [cours sur les LinkedList](./LinkedList/coursLinkedList.pdf)
+- [cours sur les SimpleList-pdf](./SimpleList/coursSimpleList.pdf)
+- [cours sur les SimpleList](./SimpleList/coursSimpleList.md)
+- [cours sur les LinkedList-pdf](./LinkedList/coursLinkedList.pdf)
+- [cours sur les LinkedList](./LinkedList/coursLinkedList.md)
 - [cours général en dev efficace](./coursDevEfficace.md)
  
 ## Exercices pratique
