@@ -197,8 +197,8 @@ public class ListSimple {
     public Cell remove(int value) {
         if (head == null) return null;
 
-        Cell current = head; // Cellule courante.
         Cell previous = null; // Cellule précédente.
+        Cell current = head; // Cellule courante.
 
         // Recherche de la cellule contenant la valeur.
         while ((current != null) && (current.value != value)) {
