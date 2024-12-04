@@ -54,7 +54,7 @@ public class AppHash {
         lfound = hWords.findValuesToSet(l);
         end = System.currentTimeMillis();
         timeElapsed = end - start;
-//        System.out.println("time with HashMap values converted to Set " + timeElapsed + "ms");
+        System.out.println("time with HashMap values converted to Set " + timeElapsed + "ms");
 
         // Test HashMap avec containsKey
         start = System.currentTimeMillis();
@@ -66,7 +66,7 @@ public class AppHash {
         // for (String s : lfound) {
         //     System.out.println(s);
         // }
-//        System.out.println("time with HashMap keys " + timeElapsed + "ms");
+        System.out.println("time with HashMap keys " + timeElapsed + "ms");
     }
 }
 
