@@ -24,7 +24,7 @@ import java.util.List;
  *
  * Dépendances : Les classes ListSimple et ListDoubleCirc doivent être définies dans le projet.
  *
- * Auteur : MAarvyn Levin
+ * Auteur : Marvyn Levin
  * Version : 1.0
  * Date : 26/11/2024
  */
@@ -203,3 +203,60 @@ class TestPerf {
     }
 }
 
+// ----------------------------
+// 100 insertions
+// ----------------------------
+//PS C:\Users\Gamer\Desktop\devEfficace\TestPerf\src> javac *.java
+//PS C:\Users\Gamer\Desktop\devEfficace\TestPerf\src> java TestPerf 100
+//liste simple : insertion dÃ©but ... 0.015s
+//liste simple : insertion milieu ... 0.001s
+//liste simple : insertion fin ... 0.0s
+//liste double : insertion dÃ©but ... 0.001s
+//liste double : insertion milieu ... 0.0s
+//liste double : insertion fin ... 0.0s
+//linked list de l'API java : insertion dÃ©but ... 0.0s
+//linked list de l'API java : insertion milieu ... 0.0s
+//linked list de l'API java : insertion fin ... 0.0s
+//array list de l'API java : insertion dÃ©but ... 0.001s
+//array list de l'API java : insertion milieu ... 0.0s
+//array list de l'API java : insertion fin ... 0.0s
+
+
+// ----------------------------
+// 10.000 insertions
+// ----------------------------
+//liste simple : insertion dÃ©but ... 0.016s
+//liste simple : insertion milieu ... 0.045s
+//liste simple : insertion fin ... 0.086s
+//liste double : insertion dÃ©but ... 0.002s
+//liste double : insertion milieu ... 0.047s
+//liste double : insertion fin ... 0.0s
+//linked list de l'API java : insertion dÃ©but ... 0.001s
+//linked list de l'API java : insertion milieu ... 0.05s
+//linked list de l'API java : insertion fin ... 0.002s
+//array list de l'API java : insertion dÃ©but ... 0.004s
+//array list de l'API java : insertion milieu ... 0.002s
+//array list de l'API java : insertion fin ... 0.001s
+
+
+// ----------------------------
+// 100.000 insertions
+// ----------------------------
+//liste simple : insertion dÃ©but ... 0.02s
+//liste simple : insertion milieu ... 3.823s
+//liste simple : insertion fin ... 7.457s
+//liste double : insertion dÃ©but ... 0.005s
+//liste double : insertion milieu ... 3.76s
+//liste double : insertion fin ... 0.004s
+//linked list de l'API java : insertion dÃ©but ... 0.008s
+//linked list de l'API java : insertion milieu ... 4.326s
+//linked list de l'API java : insertion fin ... 0.005s
+//array list de l'API java : insertion dÃ©but ... 0.273s
+//array list de l'API java : insertion milieu ... 0.149s
+//array list de l'API java : insertion fin ... 0.004s
+
+
+// Les tests montrent que les listes chaînées restent performantes même avec un grand nombre d'insertions, mais
+// les listes doublement chaînées ont une meilleure efficacité pour l'insertion en fin de liste.
+//
+// Tandis que les ArrayList quant-à elles ralentissent, surtout pour les insertions au milieu.

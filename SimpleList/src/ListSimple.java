@@ -60,13 +60,13 @@ public class ListSimple {
     public Cell get(int index) {
         if ((index < 0) || (index >= size)) return null;  // Vérifie que l'index est valide.
         Cell c = head;  // On commence à la tête de la liste.
-        int i = 0;  // Compteur pour suivre l'index actuel dans la liste.
+        int i = 0;
         // On parcourt la liste jusqu'à atteindre l'index spécifié.
         while ((c != null) && (i < index)) {
             c = c.next;  // Avance à la cellule suivante.
             i += 1;      // Incrémente l'index.
         }
-        return c;  // Retourne la cellule trouvée ou {@code null} si l'index est invalide.
+        return c;  // Retourne la cellule trouvée ou null si l'index est invalide.
     }
 
     /**
@@ -83,7 +83,7 @@ public class ListSimple {
         if (size == 0) {
             head = newCell;
         } else {
-            // Si la liste n'est pas vide, on obtient la dernière cellule (à l'index {@code size-1}).
+            // Si la liste n'est pas vide, on obtient la dernière cellule (à l'index size-1).
             c = get(size - 1);
             c.next = newCell;  // La dernière cellule pointe maintenant vers la nouvelle cellule.
         }

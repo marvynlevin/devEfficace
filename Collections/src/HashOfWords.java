@@ -21,10 +21,16 @@ public class HashOfWords {
      */
     public HashOfWords() throws IOException {
         hashMap = new HashMap<>();
+        // On essaie de récuperer les mots dans le file french_words.txt
         try (BufferedReader br = new BufferedReader(new FileReader("french_words.txt"))) {
             String line;
+//            int key = 0;
+            // Lecture ligne par ligne
             while ((line = br.readLine()) != null) {
+                // Ajoutez un couple {clé, valeur}
+//                hashMap.put(key, line);
                 hashMap.put(line.hashCode(), line);
+//                key++;
             }
         } catch (IOException e) {
             System.err.println("Erreur lors de la lecture du fichier : " + e.getMessage());
@@ -55,7 +61,9 @@ public class HashOfWords {
      * @return Une liste des mots suivis de " YES" ou " NO".
      */
     public ArrayList<String> findValuesToSet(ArrayList<String> words) {
-        HashSet<String> valueSet = new HashSet<>(hashMap.values());
+        HashSet<String> valueSet = new HashSet<>();
+        // Transfert des valeurs dans un HashSet
+        valueSet.addAll(hashMap.values());
         ArrayList<String> result = new ArrayList<>();
         for (String word : words) {
             if (valueSet.contains(word)) {

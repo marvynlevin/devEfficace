@@ -25,6 +25,6 @@ public class Cell {
      */
     public Cell(int value) {
         this.value = value;  // Assigne la valeur donnée à la cellule.
-        next = null;         // La cellule ne pointe pas vers une autre cellule, elle est donc isolée.
+        next = null;         // La cellule ne pointe pas vers une autre cellule, elle est donc isolée (null).
     }
 }

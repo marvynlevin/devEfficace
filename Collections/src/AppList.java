@@ -18,7 +18,7 @@ public class AppList {
      */
     public static void main(String[] args) throws Exception {
         // Nombre d'éléments à sélectionner aléatoirement dans la liste des mots.
-        int nbElements = 10;
+        int nbElements = 100000;
 
         ListOfWords lWords = new ListOfWords();
 
@@ -26,7 +26,6 @@ public class AppList {
         ArrayList<String> l = lWords.randomSelect(nbElements);
 
         // Décommenter pour afficher les mots sélectionnés.
-//        System.out.println("ADD :");
 //        for (String s : l) {
 //             System.out.println(s);
 //         }
@@ -38,7 +37,6 @@ public class AppList {
         long timeElapsed = end - start;
 
         // Décommenter pour afficher les résultats.
-//        System.out.println("RESULTS :");
 //         for (String s : lfound) {
 //             System.out.println(s);
 //         }
@@ -53,42 +51,68 @@ public class AppList {
 // ----------------------------
 // 10 mots
 // ----------------------------
-// PS C:\Users\Gamer\Desktop\devEfficace\Collections\src> javac *.java
-// PS C:\Users\Gamer\Desktop\devEfficace\Collections\src> java AppList
-// andorrans
-// ressemble
-// Laurent
-// rapiditÃƒÂ©
-// andelysienne
-// chronologique
-// mono-
-// ÃƒÂ©tatique
-// espÃƒÂ¨ces
-// durant
-
-// andorrans yes
-// ressemble yes
-// Laurent yes
-// rapiditÃƒÂ© yes
-// andelysienne yes
-// chronologique yes
-// mono- yes
-// ÃƒÂ©tatique yes
-// espÃƒÂ¨ces yes
-// durant yes
-// time with List 7 ms
+//PS C:\Users\Gamer\Desktop\devEfficace\Collections\src> javac *.java
+//PS C:\Users\Gamer\Desktop\devEfficace\Collections\src> java AppList
+//commercial
+//comparez
+//usure
+//Stockholm
+//ÃƒÂ©nergÃƒÂ©tique
+//Horn
+//FranÃƒÂ§oise
+//pensez
+//assassinÃƒÂ©
+//compÃƒÂ©titivitÃƒÂ©
+//commercial YES
+//comparez YES
+//usure YES
+//Stockholm YES
+//ÃƒÂ©nergÃƒÂ©tique YES
+//Horn YES
+//FranÃƒÂ§oise YES
+//pensez YES
+//assassinÃƒÂ© YES
+//compÃƒÂ©titivitÃƒÂ© YES
+//time with List 9 ms
 
 // ----------------------------
 // 10.000 mots
 // ----------------------------
-// PS C:\Users\Gamer\Desktop\devEfficace\Collections\src> javac *.java
-// PS C:\Users\Gamer\Desktop\devEfficace\Collections\src> java AppList
 // time with List 458 ms
 
 
 // ----------------------------
 // 20.000 mots
 // ----------------------------
-// PS C:\Users\Gamer\Desktop\devEfficace\Collections\src> javac *.java
-// PS C:\Users\Gamer\Desktop\devEfficace\Collections\src> java AppList
 // time with List 809 ms
+
+
+// ----------------------------
+// 30.000 mots
+// ----------------------------
+//time with List 1298 ms
+
+// ----------------------------
+// 40.000 mots
+// ----------------------------
+//time with List 1509 ms
+
+// ----------------------------
+// 50.000 mots
+// ----------------------------
+//time with List 1832 ms
+
+// ----------------------------
+// 100.000 mots
+// ----------------------------
+//time with List 4197 ms
+
+
+
+// ----------------------------
+// RESULTATS
+// ----------------------------
+// La tendance des temps d'exécution est globalement linéaire par rapport au nombre de mots, ce qui indique que le
+// coût de recherche dans la liste augmente proportionnellement à sa taille. Cela reflète la complexité temporelle
+// O(n) d'une recherche séquentielle dans une structure de type liste.
+

@@ -7,10 +7,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 /**
- * La classe {@code HashOfWordsIterator} est un programme de test permettant de trouver des mots parmis des collections à
+ * La classe {@code HashOfWordsIterator} est un programme de test permettant de trouver des mots parmi des collections à
  * l'aide de la lib util `Iterator`.
- *
- * Ce qui nous permet de mieux moduler ce que l'on souhaite faire avec la liste.
  */
 public class HashOfWordsIterator {
     private HashMap<Integer, String> hashMap;
@@ -22,10 +20,16 @@ public class HashOfWordsIterator {
      */
     public HashOfWordsIterator() throws IOException {
         hashMap = new HashMap<>();
+        // On essaie de récuperer les mots dans le file french_words.txt
         try (BufferedReader br = new BufferedReader(new FileReader("french_words.txt"))) {
             String line;
+//            int key = 0;
+            // Lecture ligne par ligne
             while ((line = br.readLine()) != null) {
+                // Ajoutez un couple {clé, valeur}
+//                hashMap.put(key, line);
                 hashMap.put(line.hashCode(), line);
+//                key++;
             }
         } catch (IOException e) {
             System.err.println("Erreur lors de la lecture du fichier : " + e.getMessage());
@@ -40,12 +44,25 @@ public class HashOfWordsIterator {
      * @return Une liste des mots suivis de "YES" ou "NO".
      */
     public ArrayList<String> findValuesList(ArrayList<String> words) {
+        // Liste retournée
         ArrayList<String> result = new ArrayList<>();
-        for (String word : words) {
+        // Initialiser la liste french_word.txt
+        Iterator<String> wordIterator = words.iterator();
+
+        // Lecture des mots un à un
+        while (wordIterator.hasNext()) {
+            // Récupère le premier mot et pointe maintenant sur le prochain mot
+            String word = wordIterator.next();
+            // Initialiser la liste des mots à found
             Iterator<String> iterator = hashMap.values().iterator();
             boolean found = false;
+
+            // True si encore des mots, false sinon, et ainsi ensuite on retourne si YES ou NOT found
             while (iterator.hasNext()) {
-                if (iterator.next().equals(word)) {
+                // Récupère le premier mot à trouver et pointe ensuite vers le prochain
+                String wordHasFound = iterator.next();
+                // Check si les mots à trouver se trouvent ou non dans les mots du file french_words.txt
+                if (wordHasFound.equals(word)) {
                     found = true;
                     break;
                 }
@@ -62,18 +79,19 @@ public class HashOfWordsIterator {
      * @return Une liste des mots suivis de "YES" ou "NO".
      */
     public ArrayList<String> findValuesToSet(ArrayList<String> words) {
-        HashSet<String> valueSet = new HashSet<>(hashMap.values());
-        Iterator<String> setIterator = valueSet.iterator();
+        // Liste retournée
         ArrayList<String> result = new ArrayList<>();
-        for (String word : words) {
-            boolean found = false;
-            while (setIterator.hasNext()) {
-                if (setIterator.next().equals(word)) {
-                    found = true;
-                    break;
-                }
-            }
-            result.add(word + (found ? " YES" : " NO"));
+        // Initialiser la liste HashSet des mots à trouver
+        HashSet<String> valueSet = new HashSet<>();
+        // Transfert des valeurs dans un HashSet
+        valueSet.addAll(hashMap.values());
+        // Initialiser la liste french_word.txt
+        Iterator<String> wordIterator = words.iterator();
+
+        // TODO
+        while (wordIterator.hasNext()) {
+            String word = wordIterator.next();
+            Iterator<String> iterator = hashMap.values().iterator();
         }
         return result;
     }
@@ -85,18 +103,13 @@ public class HashOfWordsIterator {
      * @return Une liste des mots suivis de "YES" ou "NO".
      */
     public ArrayList<String> findKeys(ArrayList<String> words) {
+        // Liste retournée
         ArrayList<String> result = new ArrayList<>();
-        Iterator<Integer> keyIterator = hashMap.keySet().iterator();
-        for (String word : words) {
-            boolean found = false;
-            while (keyIterator.hasNext()) {
-                if (keyIterator.next().equals(word.hashCode())) {
-                    found = true;
-                    break;
-                }
-            }
-            result.add(word + (found ? " YES" : " NO"));
-        }
+        // Initialiser la liste french_word.txt
+        Iterator<String> wordIterator = words.iterator();
+
+        // TODO
+
         return result;
     }
 }
