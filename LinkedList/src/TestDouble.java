@@ -77,3 +77,10 @@ public class TestDouble {
         }
     }
 }
+
+// ----------------------------
+// EXECUTION
+// ----------------------------
+// PS C:\Users\Gamer\Desktop\devEfficace\LinkedList\src> java TestDouble
+// 10 20 30 40 50
+// 20 30 50

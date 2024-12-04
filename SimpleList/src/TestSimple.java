@@ -83,3 +83,11 @@ public class TestSimple {
         }
     }
 }
+
+// ----------------------------
+// EXECUTION
+// ----------------------------
+//PS C:\Users\Gamer\Desktop\devEfficace\SimpleList\src> javac *.java
+//PS C:\Users\Gamer\Desktop\devEfficace\SimpleList\src> java TestSimple
+//10->20->30->40->50->null
+//        20->30->50->null

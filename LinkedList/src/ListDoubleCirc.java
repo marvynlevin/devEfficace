@@ -27,56 +27,66 @@ public class ListDoubleCirc {
     /**
      * Trouve une cellule contenant la valeur spécifiée.
      *
-     * @param value La valeur de la cellule à rechercher.
-     * @return La cellule trouvée ou null si la valeur n'est pas présente dans la liste.
+     * @param value La valeur à rechercher.
+     * @return La cellule trouvée ou null si absente.
      */
     public CellDouble find(int value) {
+        // Si la liste est vide, retourner null.
         if (head == null) return null;
 
+        // Commencer à la tête de la liste.
         CellDouble current = head;
 
+        // Parcourir la liste circulairement.
         do {
+            // Si la valeur correspond, retourner la cellule.
             if (current.value == value) {
                 return current;
             }
-            current = current.next;
-        } while (current != head);
+            current = current.next; // Passer à la cellule suivante.
+        } while (current != head); // Revenir à la tête si fin de liste.
 
+        // Retourner null si non trouvé.
         return null;
     }
 
+
     /**
      * Récupère la cellule à l'index spécifié.
-     * Si l'index est invalide, retourne null.
+     * Retourne null si l'index est invalide.
      *
      * @param index L'index de la cellule à récupérer.
      * @return La cellule à l'index spécifié, ou null si l'index est invalide.
      */
     public CellDouble get(int index) {
-        if ((index < 0) || (index >= size)) return null;  // Vérifie que l'index est valide.
+        // Vérifie si l'index est valide
+        if ((index < 0) || (index >= size)) return null;
 
         CellDouble current;
         int i;
 
-        // Si l'index est dans la première moitié, on commence du début.
+        // Si l'index est dans la première moitié
         if (index < size / 2) {
-            current = head;
+            current = head;  // Commence au début
             i = 0;
+            // Traverse jusqu'à l'index
             while (i < index) {
-                current = current.next;
+                current = current.next;  // Avance d'une cellule
                 i++;
             }
         } else {
-            // Si l'index est dans la deuxième moitié, on commence de la fin.
-            current = head.prev;
+            // Si l'index est dans la deuxième moitié
+            current = head.prev;  // Commence à la fin
             i = size - 1;
+            // Traverse en sens inverse jusqu'à l'index
             while (i > index) {
-                current = current.prev;
+                current = current.prev;  // Recule d'une cellule
                 i--;
             }
         }
-        return current;
+        return current;  // Retourne la cellule trouvée
     }
+
 
     /**
      * Ajoute un élément à la fin de la liste.
@@ -97,6 +107,8 @@ public class ListDoubleCirc {
         // Si la liste n'est pas vide, on ajoute un élément à la fin.
         CellDouble append = new CellDouble(value);
         CellDouble last = head.prev;    // Dernière cellule de la liste.
+
+//        last <-> append
 
         last.next = append;            // La cellule précédente pointe vers le nouvel élément.
         append.prev = last;            // Le nouvel élément pointe vers la dernière cellule.
@@ -127,6 +139,9 @@ public class ListDoubleCirc {
         CellDouble prepend = new CellDouble(value);
         CellDouble first = head;
         CellDouble last = first.prev;
+
+//        prev       head       next
+//        last <-> prepend <-> first
 
         // Mise à jour des pointeurs de la nouvelle cellule.
         prepend.prev = last;    // La nouvelle cellule pointe vers l'ancienne dernière cellule.
@@ -168,20 +183,20 @@ public class ListDoubleCirc {
         }
 
         // Parcours pour insérer au bon emplacement dans une liste non vide.
-        CellDouble current = head;  // Départ de la tête.
-        for (int i = 0; i < index; i++) {
-            current = current.next;  // Parcours jusqu'à l'index.
-        }
+        CellDouble current = get(index);
 
         // Création de la nouvelle cellule à insérer.
         CellDouble newCell = new CellDouble(value);
+
+//      (prev) previousCell (next) <-> (prev) newCell (next) <-> (prev) current (next)
 
         // Mise à jour des pointeurs de la nouvelle cellule.
         newCell.prev = current.prev;  // La nouvelle cellule pointe vers la cellule précédente.
         newCell.next = current;       // La nouvelle cellule pointe vers la cellule actuelle.
 
         // Mise à jour des pointeurs des cellules voisines.
-        current.prev.next = newCell;  // La cellule précédente pointe vers la nouvelle cellule.
+        CellDouble previousCell = current.prev; // La cellule précédente de l'élément actuel
+        previousCell.next = newCell;  // La cellule précédente pointe maintenant vers la nouvelle cellule
         current.prev = newCell;       // La cellule actuelle pointe vers la nouvelle cellule comme précédente.
 
         // Si l'insertion est à l'index 0, mettre à jour la tête.
@@ -231,6 +246,8 @@ public class ListDoubleCirc {
         CellDouble toRemove = get(index);
         CellDouble previous = toRemove.prev;  // Cellule avant celle à supprimer.
         CellDouble next = toRemove.next;      // Cellule après celle à supprimer.
+
+//        previous (next) <-> (prev) toRemove (next) <-> (prev) next
 
         // Mise à jour des pointeurs pour les cellules voisines :
         previous.next = next;   // La cellule précédente pointe vers la cellule suivante.

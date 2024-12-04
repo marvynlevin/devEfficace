@@ -1,11 +1,6 @@
 /**
  * La classe {@code CellDouble} représente une cellule d'une liste chaînée doublement chaînée.
  * Chaque cellule contient une valeur entière et des pointeurs vers la cellule précédente et la cellule suivante.
- *
- * <p>Elle est généralement utilisée dans des structures de données comme les listes doublement chaînées,
- * où l'accès aux éléments peut se faire dans les deux directions (avant et arrière).</p>
- *
- * @version 1.0
  */
 public class CellDouble {
 
@@ -40,5 +35,7 @@ public class CellDouble {
     }
 }
 
+// ----------------------------
 // Pour générer la JavaDoc au format HTML
+// ----------------------------
 //& "C:\Program Files\Java\jdk-17\bin\javadoc.exe" -d docs -encoding UTF-8 -docencoding UTF-8 -charset UTF-8 "CellDouble.java"
