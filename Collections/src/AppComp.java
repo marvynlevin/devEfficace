@@ -170,14 +170,14 @@ public class AppComp {
 //HashMap
 //time with HashMap values List 20364ms
 //time with HashMap values converted to Set 42ms
-//time with HashMap keys 27ms
+//time with HashMap keys 27ms (second)
 //        TreeMap
 //time with HashMap values List 10384ms
-//time with HashMap values converted to Set 15ms
+//time with HashMap values converted to Set 15ms (first)
 //time with HashMap keys 44ms
 //        LinkedHashMap
 //time with HashMap values List 4843ms
-//time with HashMap values converted to Set 33ms
+//time with HashMap values converted to Set 33ms (third)
 //time with HashMap keys 50ms
 
 
@@ -187,7 +187,7 @@ public class AppComp {
 // ----------------------------
 //Les tests montrent que les Map sont plus performantes que l'ArrayList pour les grandes collections.
 //
-//HashMap : Très rapide (27 ms pour les clés, 42 ms pour les valeurs en Set), grâce à sa gestion optimisée des hachages.
-//LinkedHashMap : Performances proches du HashMap (33 ms pour les valeurs, 50 ms pour les clés), mais un léger surcoût dû à l'ordre d'insertion.
-//TreeMap : Plus lent (15 ms pour les valeurs, 44 ms pour les clés) à cause du tri automatique des éléments.
-//ArrayList : Moins efficace (5066 ms pour les recherches fréquentes), surtout pour de grandes collections.
+//HashMap : Très rapide, grâce à sa gestion optimisée des hachages.
+//LinkedHashMap : Très performant, mais un léger surcoût dû à l'ordre d'insertion.
+//TreeMap : Très performant, malgré son tri automatique des éléments.
+//ArrayList : Moins efficace, surtout pour de grandes collections.
