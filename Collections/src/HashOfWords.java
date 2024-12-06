@@ -61,9 +61,8 @@ public class HashOfWords {
      * @return Une liste des mots suivis de " YES" ou " NO".
      */
     public ArrayList<String> findValuesToSet(ArrayList<String> words) {
-        HashSet<String> valueSet = new HashSet<>();
         // Transfert des valeurs dans un HashSet
-        valueSet.addAll(hashMap.values());
+        HashSet<String> valueSet = new HashSet<>(hashMap.values());
         ArrayList<String> result = new ArrayList<>();
         for (String word : words) {
             if (valueSet.contains(word)) {

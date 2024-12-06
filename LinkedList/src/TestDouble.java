@@ -1,28 +1,31 @@
 /**
- * La classe {@code TestDouble} contient une méthode {@code main} pour tester les fonctionnalités
- * de la classe {@code ListDoubleCirc}, qui représente une liste chaînée circulaire doublement chaînée.
- *
- * <p>Elle permet de vérifier les différentes opérations telles que l'insertion, la suppression,
- * l'accès et la recherche dans une liste doublement chaînée circulaire.</p>
+ * Classe TestDouble
+ * <p>
+ * Cette classe exécute des tests pour valider les fonctionnalités de la classe {@code ListDoubleCirc},
+ * une liste chaînée circulaire doublement chaînée.
+ * Les tests couvrent les opérations suivantes :
+ * </p>
+ * <ul>
+ *     <li>Ajout d'éléments (en tête, au milieu, en fin).</li>
+ *     <li>Suppression d'éléments (par valeur ou par index).</li>
+ *     <li>Accès à des éléments (par index).</li>
+ *     <li>Recherche d'éléments (par valeur).</li>
+ * </ul>
+ * <p>
+ * Les résultats des tests sont affichés pour vérifier le bon fonctionnement des méthodes.
+ * </p>
  *
  * @version 1.0
+ * @author Marvyn
+ * @date 17/11/2024
+ *
+ * @see ListDoubleCirc
  */
 public class TestDouble {
-
     /**
-     * Méthode principale de test pour la classe {@code ListDoubleCirc}.
-     * Elle effectue divers tests sur les méthodes de la liste chaînée circulaire :
-     * <ul>
-     *   <li>Insertion en tête, à la fin, et à des positions spécifiques</li>
-     *   <li>Suppression par valeur et par index</li>
-     *   <li>Accès à une cellule par index</li>
-     *   <li>Recherche d'une cellule par valeur</li>
-     * </ul>
+     * Méthode principale pour exécuter les tests unitaires sur la classe {@code ListDoubleCirc}.
      *
-     * <p>Les résultats des tests sont affichés dans la console et vérifient que
-     * les opérations sont correctes.</p>
-     *
-     * @param args Arguments de la ligne de commande (non utilisés).
+     * @param args Les arguments de la ligne de commande (non utilisés).
      */
     public static void main(String[] args) {
 

@@ -56,10 +56,8 @@ public class HashOfWordsIterator {
             // Récupère le premier mot et pointe maintenant sur le prochain mot
             String word = wordIterator.next();
 
-            // Vérifie si le mot est présent dans les valeurs de hashMap
             boolean found = hashMap.containsValue(word);
 
-            // Ajoute "YES" ou "NO" selon si le mot a été trouvé ou non
             result.add(word + (found ? " YES" : " NO"));
         }
 
@@ -76,7 +74,6 @@ public class HashOfWordsIterator {
     public ArrayList<String> findValuesToSet(ArrayList<String> words) {
         // Liste retournée
         ArrayList<String> result = new ArrayList<>();
-
         // Initialiser la liste HashSet des mots à trouver
         HashSet<String> valueSet = new HashSet<>();
 
@@ -95,16 +92,11 @@ public class HashOfWordsIterator {
 
         // Initialiser l'iterator pour les mots à rechercher
         Iterator<String> wordIterator = words.iterator();
-
         // Parcours de la liste des mots à rechercher
         while (wordIterator.hasNext()) {
             String word = wordIterator.next();
-            // Vérifier si le mot existe dans le HashSet
-            if (valueSet.contains(word)) {
-                result.add(word + " YES");
-            } else {
-                result.add(word + " NO");
-            }
+            boolean found = valueSet.contains(word);
+            result.add(word + (found ? " YES" : " NO"));
         }
 
         return result;
@@ -125,16 +117,13 @@ public class HashOfWordsIterator {
 
         // Parcours des mots un à un
         while (wordIterator.hasNext()) {
-            // Récupérer le mot courant
             String word = wordIterator.next();
 
             // Calculer la valeur hachée du mot
             int hashCode = word.hashCode();
 
-            // Vérifier si le hashCode existe comme clé dans le hashMap
             boolean found = hashMap.containsKey(hashCode);
 
-            // Ajouter le résultat avec "YES" ou "NO"
             result.add(word + (found ? " YES" : " NO"));
         }
 

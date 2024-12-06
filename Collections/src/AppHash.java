@@ -1,13 +1,32 @@
 import java.util.ArrayList;
 
 /**
- * La classe {@code AppHash} est un programme de test permettant de comparer
- * les performances de recherche de mots dans une liste et dans une table de hachage.
- * Le programme utilise différentes méthodes pour vérifier si des mots aléatoires
- * sont présents dans un ensemble de mots préchargés.
+ * Classe AppHash
+ * <p>
+ * Cette classe compare les performances de recherche de mots dans une liste et dans une table de hachage.
+ * Les tests mesurent le temps nécessaire pour vérifier si un ensemble de mots générés aléatoirement
+ * se trouve dans une structure de données donnée.
+ * </p>
+ * <ul>
+ *     <li>ListOfWords : une classe qui gère la liste complète de mots.</li>
+ *     <li>Recherche dans une table de hachage avec HashOfWords.</li>
+ * </ul>
+ * <pre>
+ * Usage :
+ * java AppHash
+ * </pre>
+ * <p>
+ * Les résultats des tests sont affichés en millisecondes.
+ * </p>
+ *
+ * @author Marvyn
+ * @version 1.0
+ * @date 01/12/2024
+ *
+ * @see ListOfWords
+ * @see HashOfWords
  */
 public class AppHash {
-
     /**
      * Méthode principale pour exécuter les tests de performance.
      *
@@ -22,9 +41,9 @@ public class AppHash {
         ArrayList<String> l = lWords.randomSelect(nbElements);
 
         // Affichage des mots générés
-        for (String s : l) {
+//        for (String s : l) {
 //             System.out.println(s);
-        }
+//        }
 
         // Test avec les listes de l'ancien exercice
         long start = System.currentTimeMillis();
@@ -33,9 +52,9 @@ public class AppHash {
         long timeElapsed = end - start;
 
         // Affichage des résultats pour la liste
-        for (String s : lfound) {
+//        for (String s : lfound) {
 //             System.out.println(s);
-        }
+//        }
         System.out.println("time with List " + timeElapsed + "ms");
 
         // Test des HashMap/Set key/value
@@ -47,6 +66,11 @@ public class AppHash {
         lfound = hWords.findValuesList(l);
         end = System.currentTimeMillis();
         timeElapsed = end - start;
+
+        // Affichage des résultats pour containsValue (désactivé ici)
+        // for (String s : lfound) {
+        //     System.out.println(s);
+        // }
         System.out.println("time with HashMap values List " + timeElapsed + "ms");
 
         // Test HashMap converti en HashSet
@@ -54,7 +78,13 @@ public class AppHash {
         lfound = hWords.findValuesToSet(l);
         end = System.currentTimeMillis();
         timeElapsed = end - start;
+
+        // Affichage des résultats pour contains (désactivé ici)
+        // for (String s : lfound) {
+        //     System.out.println(s);
+        // }
         System.out.println("time with HashMap values converted to Set " + timeElapsed + "ms");
+
 
         // Test HashMap avec containsKey
         start = System.currentTimeMillis();
@@ -91,22 +121,6 @@ public class AppHash {
 //time with HashMap values List 8ms
 //time with HashMap values converted to Set 11ms
 //time with HashMap keys 5ms
-
-// ----------------------------
-// 1.000 mots
-// ----------------------------
-//time with List 78ms
-//time with HashMap values List 302ms
-//time with HashMap values converted to Set 7ms
-//time with HashMap keys 1ms
-
-// ----------------------------
-// 10.000 mots
-// ----------------------------
-//time with List 659ms
-//time with HashMap values List 2835ms
-//time with HashMap values converted to Set 10ms
-//time with HashMap keys 4ms
 
 // ----------------------------
 // 100.000 mots
@@ -148,32 +162,21 @@ public class AppHash {
 //time with HashMap values List 7ms
 
 // ----------------------------
-// 1.000 mots
-// ----------------------------
-//time with List 73ms
-//time with HashMap values List 114ms
-
-// ----------------------------
-// 10.000 mots
-// ----------------------------
-//time with List 443ms
-//time with HashMap values List 958ms
-
-// ----------------------------
 // 100.000 mots
 // ----------------------------
-//time with List 4182ms
-//time with HashMap values List 10657ms
+//time with List 5134ms
+//time with HashMap values List 27290ms
+//time with HashMap values converted to Set 42ms
+//time with HashMap keys 29ms
 
 
 
 // ----------------------------
 // RESULTATS
 // ----------------------------
-// POUR FOR (pour les Iterator, je n'ai pas pu faire encore de test car je n'ai pas fini de les implémenter)
-// Les résultats montrent que l'utilisation des clés dans une HashMap (avec containsKey)
-// est beaucoup plus rapide, avec une complexité moyenne, par rapport à la recherche
-// séquentielle dans une liste (O(n)) - for.
+// Avec les boucles for et avec les Iterator, les résultats montrent que l'utilisation des clés dans une HashMap
+// (avec containsKey) est beaucoup plus rapide (comparation de Integer au lieu de String, ce qui consomme moins de bits,
+// par rapport à la recherche séquentielle dans une liste (O(n)) - for.
 //
 // La méthode qui convertit les valeurs en HashSet donne
 // également de bons résultats, bien qu'elle nécessite une étape supplémentaire (transfert des données du HashMap

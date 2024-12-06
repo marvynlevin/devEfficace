@@ -5,31 +5,40 @@ import java.util.List;
 
 /**
  * Classe TestPerf
+ * <p>
+ * Cette classe effectue une s&eacute;rie de tests de performance sur diff&eacute;rentes structures de listes.
+ * Les tests comparent les performances des op&eacute;rations d'insertion (d&eacute;but, milieu, fin)
+ * pour plusieurs impl&eacute;mentations de listes :
+ * </p>
+ * <ul>
+ *     <li>ListSimple : une liste simplement cha&icirc;n&eacute;e.</li>
+ *     <li>ListDoubleCirc : une liste doublement cha&icirc;n&eacute;e circulaire.</li>
+ *     <li>LinkedList : la classe LinkedList de l'API Java.</li>
+ *     <li>ArrayList : la classe ArrayList de l'API Java.</li>
+ * </ul>
+ * <p>
+ * L'utilisateur doit fournir un argument en ligne de commande sp&eacute;cifiant le nombre
+ * de cellules &agrave; ins&eacute;rer dans les listes pour les tests.
+ * </p>
+ * <pre>
+ * Usage :
+ * java TestPerf nb_cell
+ * </pre>
+ * <p>
+ * Les r&eacute;sultats des tests sont affich&eacute;s sous forme de temps d'ex&eacute;cution en secondes.
+ * </p>
+ * <p>
+ * D&eacute;pendances : Les classes <code>ListSimple</code> et <code>ListDoubleCirc</code> doivent &ecirc;tre d&eacute;finies dans le projet.
+ * </p>
  *
- * Cette classe effectue une série de tests de performance sur différentes structures de listes.
- * Les tests comparent les performances des opérations d'insertion (début, milieu, fin)
- * pour plusieurs implémentations de listes :
+ * @author Marvyn Levin
+ * @version 1.0
+ * @date 26/11/2024
  *
- * - ListSimple : une liste simplement chaînée.
- * - ListDoubleCirc : une liste doublement chaînée circulaire.
- * - LinkedList : la classe LinkedList de l'API Java.
- * - ArrayList : la classe ArrayList de l'API Java.
- *
- * L'utilisateur doit fournir un argument en ligne de commande spécifiant le nombre 
- * de cellules à insérer dans les listes pour les tests.
- *
- * Usage : `java TestPerf nb_cell`
- *
- * Les résultats des tests sont affichés sous forme de temps d'exécution en secondes.
- *
- * Dépendances : Les classes ListSimple et ListDoubleCirc doivent être définies dans le projet.
- *
- * Auteur : Marvyn Levin
- * Version : 1.0
- * Date : 26/11/2024
+ * @see ListSimple
+ * @see ListDoubleCirc
  */
 class TestPerf {
-
     /**
      * Point d'entrée principal du programme.
      * Effectue les tests de performance sur les différentes listes.
@@ -221,7 +230,6 @@ class TestPerf {
 //array list de l'API java : insertion milieu ... 0.0s
 //array list de l'API java : insertion fin ... 0.0s
 
-
 // ----------------------------
 // 10.000 insertions
 // ----------------------------
@@ -237,7 +245,6 @@ class TestPerf {
 //array list de l'API java : insertion dÃ©but ... 0.004s
 //array list de l'API java : insertion milieu ... 0.002s
 //array list de l'API java : insertion fin ... 0.001s
-
 
 // ----------------------------
 // 100.000 insertions
@@ -256,6 +263,10 @@ class TestPerf {
 //array list de l'API java : insertion fin ... 0.004s
 
 
+
+// ----------------------------
+// RESULTATS
+// ----------------------------
 // Les tests montrent que les listes chaînées restent performantes même avec un grand nombre d'insertions, mais
 // les listes doublement chaînées ont une meilleure efficacité pour l'insertion en fin de liste.
 //

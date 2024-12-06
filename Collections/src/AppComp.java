@@ -1,12 +1,31 @@
 import java.util.ArrayList;
 
 /**
- * La classe {@code AppComp} est le point d'entrée du programme qui effectue des recherches dans une liste de mots.
- * Elle mesure les temps d'exécution pour trois structures de données différentes (List, HashMap, TreeMap, LinkedHashMap)
- * et compare les performances des différentes approches pour trouver des mots dans une collection.
+ * Classe AppComp
+ * <p>
+ * Cette classe compare les performances de recherche de mots dans différentes structures de données :
+ * <ul>
+ *     <li>List (via ListOfWords).</li>
+ *     <li>HashMap, TreeMap, et LinkedHashMap (HashOfWordsComp).</li>
+ * </ul>
+ * Elle mesure les temps d'exécution pour chaque approche afin de déterminer leur efficacité.
+ * </p>
+ * <pre>
+ * Usage :
+ * java AppComp
+ * </pre>
+ * <p>
+ * Les résultats des tests sont affichés en millisecondes.
+ * </p>
+ *
+ * @author Marvyn
+ * @version 1.0
+ * @date 04/12/2024
+ *
+ * @see ListOfWords
+ * @see HashOfWordsComp
  */
 public class AppComp {
-
     /**
      * Le point d'entrée principal du programme.
      * Cette méthode sélectionne un certain nombre de mots aléatoires, puis teste les performances de recherche dans une List et
@@ -18,11 +37,9 @@ public class AppComp {
     public static void main(String[] args) throws Exception {
 
         // Nombre d'éléments à sélectionner aléatoirement dans le fichier de mots
-        int nbElements = 1000000;
-
+        int nbElements = 100000;
         // Crée une instance de la classe ListOfWords pour récupérer une liste de mots
         ListOfWords lWords = new ListOfWords();
-
         // Sélectionne un certain nombre de mots aléatoires dans la liste de mots
         ArrayList<String> l = lWords.randomSelect(nbElements);
 
@@ -33,11 +50,7 @@ public class AppComp {
 
         // Démarre la mesure du temps d'exécution pour la recherche dans la liste
         long start = System.currentTimeMillis();
-
-        // Recherche des mots dans la liste en utilisant la méthode find() de ListOfWords
         ArrayList<String> lfound = lWords.find(l);
-
-        // Arrête la mesure du temps
         long end = System.currentTimeMillis();
         long timeElapsed = end - start;
 
@@ -73,6 +86,11 @@ public class AppComp {
             lfound = hWords.findValuesList(l);
             end = System.currentTimeMillis();
             timeElapsed = end - start;
+
+            // Affichage des résultats pour containsValue (désactivé ici)
+            // for (String s : lfound) {
+            //     System.out.println(s);
+            // }
             System.out.println("time with HashMap values List " + timeElapsed + "ms");
 
             // Mesure le temps d'exécution pour rechercher des mots dans les valeurs converties en HashSet
@@ -80,6 +98,11 @@ public class AppComp {
             lfound = hWords.findValuesToSet(l);
             end = System.currentTimeMillis();
             timeElapsed = end - start;
+
+            // Affichage des résultats pour contains (désactivé ici)
+            // for (String s : lfound) {
+            //     System.out.println(s);
+            // }
             System.out.println("time with HashMap values converted to Set " + timeElapsed + "ms");
 
             // Mesure le temps d'exécution pour rechercher des mots dans les clés de la Map
@@ -87,6 +110,12 @@ public class AppComp {
             lfound = hWords.findKeys(l);
             end = System.currentTimeMillis();
             timeElapsed = end - start;
+
+            // Affichage des résultats pour containsKey (désactivé ici)
+            // for (String s : lfound) {
+            //     System.out.println(s);
+            // }
+
             System.out.println("time with HashMap keys " + timeElapsed + "ms");
         }
     }
@@ -134,7 +163,6 @@ public class AppComp {
 //time with HashMap values converted to Set 8ms
 //time with HashMap keys 0ms
 
-
 // ----------------------------
 // 100.000 mots
 // ----------------------------
@@ -151,7 +179,6 @@ public class AppComp {
 //time with HashMap values List 4843ms
 //time with HashMap values converted to Set 33ms
 //time with HashMap keys 50ms
-
 
 // ----------------------------
 // 1.000.000 mots
@@ -170,16 +197,21 @@ public class AppComp {
 //time with HashMap values converted to Set 160ms
 //time with HashMap keys 270ms
 
+
+
+// ----------------------------
+// RESULTATS
+// ----------------------------
 // Les tests ont montré que pour de grandes collections de mots, les structures de données basées sur
-// des Map sont plus performantes que les listes :
+// des Map sont plus performantes que les ArrayList :
 //
-// Le HashMap est la solution la plus rapide, surtout pour les recherches par clés.
+// Le HashMap est la solution la plus rapide, surtout pour les recherches par clés (HashCode()).
 //
-// Le LinkedHashMap offre des performances similaires mais avec un léger
-// surcoût dû à l'ordre d'insertion.
+// Le LinkedHashMap offre des performances similaires, mais avec un léger
+// surcoût dû à l'ordre d'insertion (inutile ici).
 //
 // Le TreeMap est plus lent en raison de la gestion de l'ordre, bien qu'il
-// soit utile lorsqu'un tri est nécessaire (pas ici).
+// soit utile lorsqu'un tri est nécessaire (inutile ici).
 //
 // Enfin, l'ArrayList montre des performances dégradées pour les grandes
 // collections, ce qui en fait une option moins efficace pour des recherches fréquentes.

@@ -1,11 +1,25 @@
 /**
- * La classe {@code TestSimple} contient des tests unitaires pour vérifier les fonctionnalités de la classe {@code ListSimple}.
+ * Classe TestSimple
+ * <p>
+ * Cette classe exécute des tests pour vérifier les fonctionnalités de la classe {@code ListSimple}.
+ * Les tests couvrent les opérations suivantes :
+ * </p>
+ * <ul>
+ *     <li>Ajout d'éléments (en tête, au milieu, en fin).</li>
+ *     <li>Suppression d'éléments (par valeur ou par index).</li>
+ *     <li>Recherche d'éléments (par valeur ou par index).</li>
+ * </ul>
+ * <p>
+ * Les résultats des opérations sont affichés pour valider leur bon fonctionnement.
+ * </p>
  *
- * Cette classe de test exécute des scénarios courants tels que l'ajout, l'insertion, la suppression et la recherche d'éléments
- * dans une liste chaînée simple. Les résultats de chaque opération sont imprimés pour valider le comportement attendu des méthodes.
+ * @author Marvyn
+ * @version 1.0
+ * @date 10/11/2024
+ *
+ * @see ListSimple
  */
 public class TestSimple {
-
     /**
      * Méthode principale pour exécuter les tests unitaires sur la classe {@code ListSimple}.
      *

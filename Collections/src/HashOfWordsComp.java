@@ -20,13 +20,13 @@ public class HashOfWordsComp {
         // Initialisation de la Map selon le type choisi
         switch (mapType) {
             case 0:
-                map = new HashMap<>();
+                map = new HashMap<>(); // Organise en fonction d'insertion {key, value} (efficace avec une clé hashCode())
                 break;
             case 1:
-                map = new TreeMap<>();
+                map = new TreeMap<>(); // Trier dans l'ordre croissant {key, value} (recherche)
                 break;
             case 2:
-                map = new LinkedHashMap<>();
+                map = new LinkedHashMap<>(); // Organise en fonction d'insertion {key, value} (insertions)
                 break;
             default:
                 throw new IllegalArgumentException("Type de map invalide: " + mapType);
@@ -44,7 +44,7 @@ public class HashOfWordsComp {
         try (BufferedReader br = new BufferedReader(new FileReader("french_words.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                map.put(line.hashCode(), line); // Utilise le hashCode du mot comme clé
+                map.put(line.hashCode(), line); // Utilise le hashCode du mot comme clé et line comme valeur
             }
         }
     }
@@ -56,12 +56,22 @@ public class HashOfWordsComp {
      * @return Liste des mots avec "YES" ou "NO" pour indiquer leur présence.
      */
     public ArrayList<String> findValuesList(ArrayList<String> words) {
+        // Liste retournée
         ArrayList<String> result = new ArrayList<>();
+
+        // Initialiser l'iterator pour les mots à rechercher
         Iterator<String> wordIterator = words.iterator();
+
+        // Lecture des mots un à un
         while (wordIterator.hasNext()) {
+            // Récupère le premier mot et pointe maintenant sur le prochain mot
             String word = wordIterator.next();
-            result.add(word + (map.containsValue(word) ? " YES" : " NO"));
+
+            boolean found = map.containsValue(word);
+
+            result.add(word + (found ? " YES" : " NO"));
         }
+
         return result;
     }
 
@@ -72,20 +82,29 @@ public class HashOfWordsComp {
      * @return Liste des mots avec "YES" ou "NO" pour indiquer leur présence.
      */
     public ArrayList<String> findValuesToSet(ArrayList<String> words) {
+        // Liste retournée
         ArrayList<String> result = new ArrayList<>();
+        // Initialiser la liste HashSet des mots à trouver
         HashSet<String> valueSet = new HashSet<>();
-        // Utilisation d'un iterator pour ajouter les valeurs de la Map dans un HashSet
+
+        // Utiliser un iterator pour ajouter les valeurs du HashMap dans le HashSet
         Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()) {
+            // Récupérer la prochaine entrée (clé-valeur)
             Map.Entry<Integer, String> entry = iterator.next();
+            // Ajouter la valeur de chaque entrée
             valueSet.add(entry.getValue());
         }
 
+        // Initialiser l'iterator pour les mots à rechercher
         Iterator<String> wordIterator = words.iterator();
+        // Parcours de la liste des mots à rechercher
         while (wordIterator.hasNext()) {
             String word = wordIterator.next();
-            result.add(word + (valueSet.contains(word) ? " YES" : " NO"));
+            boolean found = valueSet.contains(word);
+            result.add(word + (found ? " YES" : " NO"));
         }
+
         return result;
     }
 
@@ -96,13 +115,23 @@ public class HashOfWordsComp {
      * @return Liste des mots avec "YES" ou "NO" pour indiquer leur présence.
      */
     public ArrayList<String> findKeys(ArrayList<String> words) {
+        // Liste retournée
         ArrayList<String> result = new ArrayList<>();
+
+        // Initialiser un iterator pour la liste des mots
         Iterator<String> wordIterator = words.iterator();
+
+        // Parcours des mots un à un
         while (wordIterator.hasNext()) {
             String word = wordIterator.next();
+
+            // Calculer la valeur hachée du mot
             int hashCode = word.hashCode();
-            result.add(word + (map.containsKey(hashCode) ? " YES" : " NO"));
+            boolean found = map.containsKey(hashCode);
+
+            result.add(word + (found ? " YES" : " NO"));
         }
+
         return result;
     }
 }

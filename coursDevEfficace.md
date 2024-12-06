@@ -346,3 +346,231 @@ if (d == 6.6) {
     // ...
 }
 ````
+
+
+## Les arbres en Java
+
+### Parcours en profondeur d'abord
+
+````java
+type_retour parcours(Node n)
+    // traitement 1/n (optionnel)
+    pour caque fils de n 
+        type_retour val = parcours (fils)
+        // tests sur val (optionnel)
+        si val == ...
+        sinon ...
+        fin si
+    fin pour
+    // traitements (optionnel)
+    retourne valeur_defaut
+````
+
+Exemple d'arbre :
+```txt
+        1(5)
+  2(1)  3(3)  6(4) 
+        4(8)
+        5(2)
+```
+
+Exemple de Noeud en Java :
+```java
+class Node {
+    public int val;
+    public List<Node> children;
+    
+    Node (int val) {
+        this.val = val;
+    }
+    
+    // ...
+}
+```
+
+Exemple de méthode pour trouver une valeur dans un arbre en Java:
+````java
+boolean contains(Node n, int val) {
+    // Si noeud à la valeur souhaitée, on renvoie la valeur.
+    if (n.noeud == val) {
+        return true;
+    }
+    
+  // Test pour toutes les branches.
+    for (Node fils : n.children) {
+        boolean rep = cotains(fils, val);
+        if (rep == true) return true;
+    }
+    
+    return false;
+}
+````
+
+Méthode récursive pour trouver la taille de l'arbre :
+
+`````java
+int treeDepth(node n, int level) {
+    // Si on est sur une feuille, alors size du fils 0 donc on return level.
+    if (n.children.size() == 0) {
+        return level;
+    }
+    int maxDepth = 0;
+    
+    // Test pour toutes les branches.
+    for (Node fils : n.children) {
+        int depth = treeDepth(fils, level + 1);
+        // Si la hauteur est supérieur pour cette branche.
+        if (depth > maxDepth) {
+            maxDepth = depth;
+        }
+    }
+    
+    return maxDepth;
+}
+`````
+
+Méthode non récursive pour trouver la taille de l'arbre :
+
+````java
+int treeDepth(Node n) {
+  // Si on est sur une feuille, alors size du fils 0 donc on renvoie level.
+  if (n.children.size() = 0) {
+    return 1;
+  }
+  int maxDepth = 0;
+
+  // Test pour toutes les branches.
+  for (Node fils : n.children) {
+    int depth = treeDepth(fils);
+    // Si la hauteur est supérieur pour cette branche.
+    if (depth > maxDepth) {
+      maxDepth = depth;
+    }
+    return maxDepth + 1;
+  }
+}
+````
+
+Méthode non récursive pour trouver le nombre de feuille dans un arbre :
+
+````java
+int nbNeaves(Node n) {
+  // Si on est sur une feuille, alors on renvoie 1.
+  if (n.children.size() == 0) {
+        return 1;
+    }
+    int nbLeaves = 0;
+    // Test pour toutes les branches.
+    for (Node fils : n.children) {
+        // On fait le processus pour chaque nœud fils.
+        nbLeaves += nbLeaves(fils);
+    }
+    return nbLeaves;
+}
+````
+
+### Parcours en largeur d'abord
+
+
+Exemple d'arbre :
+```txt
+        1(5)
+  2(1)  3(3)  4(4) 
+  5(2)  6(8)
+        7(2)
+```
+
+````java
+public boolean contains(Node n, int val) {
+    // Si la valeur du nœud actuel est celle que l'on cherche.
+    if (n.val == val) {
+        return true;
+    }
+
+    // Initialisation d'une file FIFO pour effectuer une recherche en largeur (BFS).
+    Queue<Node> queue = new ArrayDequeue<>();
+
+    // Ajoute tous les enfants du nœud actuel à la file.
+    for (Node fils : n.children) {
+        queue.offer(fils); // Ajoute chaque enfant à la queue.
+    }
+
+    // Tant que la file n'est pas vide, continue la recherche.
+    while (!queue.isEmpty()) {
+        // Récupère et supprime le nœud en tête de la file.
+        // poll() est utilisé pour retirer le premier élément de la queue.
+        Node parent = queue.poll();
+
+        // Vérifie si le nœud courant contient la valeur recherchée.
+        if (parent.val == val) {
+            return true; 
+        } else {
+            // Ajoute tous les enfants du nœud courant à la file pour les explorer ensuite.
+            for (Node fils : parent.children) {
+                queue.offer(fils);
+            }
+        }
+    }
+    return false;
+}
+````
+
+Méthode pour utiliser un neoud sératatif:
+
+```txt
+// Nouvel arbre.
+
+        1(5)
+  2(1)  3(3)  4(4) 
+  5(2)  6(8)  7(10)
+        8(12)
+```
+
+````txt
+// La méthode de séparation.
+
+[1][3][4][///][2][8][10][///][12]
+````
+
+````java
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+
+public List<Node> getNodesForLevel(Node n, int Level) {
+  // Ajoter les noeuds séparatifs  
+  List<Node> list = new ArrayList<>();
+  if (level == 0) {
+    list.add(n);
+  } else if (level > 0) {
+    int currentLevel = 1;
+    Node separ = new Node(-9999);
+    Queue<Node> queue = new ArrayDeque<>();
+  }
+    for (Node fils : n.children) {
+        queue.offer(fils);
+    queue.offer(separ);
+    
+    // Donner les profondeurs pour les différentes branches
+    while (!queue.isEmpty()) {
+        Node parent = queue.poll();
+        if (parent == separ) {
+            if (currentLevel == level) {
+                return list;
+            } else {
+                currentLevel += 1;
+                queue.offer(separ);
+            }
+        }
+        else {
+            if (currentLevel == level) {
+                list.add(parent);
+            } else {
+                for(Node fils : parent.children) {
+                    queue.offer(fils);
+                }
+            }
+        }
+    }
+  }
+}
+````

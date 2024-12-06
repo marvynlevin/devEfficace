@@ -1,15 +1,36 @@
 import java.util.ArrayList;
 
 /**
- * Classe principale pour tester les performances de recherche de mots dans une liste.
+ * Classe AppList
  * <p>
- * Cette application utilise une instance de {@link ListOfWords} pour charger une liste
- * de mots depuis un fichier et mesurer le temps nécessaire pour vérifier si un sous-ensemble
- * de mots appartient à la liste complète.
+ * Cette classe teste les performances de recherche de mots dans une liste.
+ * Elle compare les temps de recherche pour différents nombres de mots sélectionnés
+ * dans une liste complète de mots. Les tests mesurent le temps nécessaire pour vérifier
+ * si un sous-ensemble de mots appartient à la liste complète.
  * </p>
+ * <ul>
+ *     <li>ListOfWords : une classe qui gère la liste complète de mots.</li>
+ *     <li>ArrayList : la classe ArrayList de l'API Java, utilisée pour stocker les mots sélectionnés.</li>
+ * </ul>
+ * <pre>
+ * Usage :
+ * java AppList
+ * </pre>
+ * <p>
+ * Les résultats des tests sont affichés sous forme de temps d'exécution en millisecondes.
+ * </p>
+ * <p>
+ * Dépendances : La classe <code>ListOfWords</code> doit être définie dans le projet et doit fournir les méthodes
+ * <code>randomSelect(int)</code> et <code>find(ArrayList)</code> pour la sélection et la recherche des mots.
+ * </p>
+ *
+ * @author Marvyn Levin
+ * @version 1.0
+ * @date 01/12/2024
+ *
+ * @see ListOfWords
  */
 public class AppList {
-
     /**
      * Méthode principale pour exécuter le programme.
      *
@@ -18,7 +39,7 @@ public class AppList {
      */
     public static void main(String[] args) throws Exception {
         // Nombre d'éléments à sélectionner aléatoirement dans la liste des mots.
-        int nbElements = 100000;
+        int nbElements = 10000;
 
         ListOfWords lWords = new ListOfWords();
 
@@ -115,4 +136,3 @@ public class AppList {
 // La tendance des temps d'exécution est globalement linéaire par rapport au nombre de mots, ce qui indique que le
 // coût de recherche dans la liste augmente proportionnellement à sa taille. Cela reflète la complexité temporelle
 // O(n) d'une recherche séquentielle dans une structure de type liste.
-
