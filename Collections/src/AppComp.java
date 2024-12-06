@@ -180,38 +180,14 @@ public class AppComp {
 //time with HashMap values converted to Set 33ms
 //time with HashMap keys 50ms
 
-// ----------------------------
-// 1.000.000 mots
-// ----------------------------
-//time with List 58612ms
-//        HashMap
-//time with HashMap values List 181876ms
-//time with HashMap values converted to Set 252ms
-//time with HashMap keys 175ms
-//        TreeMap
-//time with HashMap values List 837329ms
-//time with HashMap values converted to Set 446ms
-//time with HashMap keys 442ms
-//        LinkedHashMap
-//time with HashMap values List 68423ms
-//time with HashMap values converted to Set 160ms
-//time with HashMap keys 270ms
-
 
 
 // ----------------------------
 // RESULTATS
 // ----------------------------
-// Les tests ont montré que pour de grandes collections de mots, les structures de données basées sur
-// des Map sont plus performantes que les ArrayList :
+//Les tests montrent que les Map sont plus performantes que l'ArrayList pour les grandes collections.
 //
-// Le HashMap est la solution la plus rapide, surtout pour les recherches par clés (HashCode()).
-//
-// Le LinkedHashMap offre des performances similaires, mais avec un léger
-// surcoût dû à l'ordre d'insertion (inutile ici).
-//
-// Le TreeMap est plus lent en raison de la gestion de l'ordre, bien qu'il
-// soit utile lorsqu'un tri est nécessaire (inutile ici).
-//
-// Enfin, l'ArrayList montre des performances dégradées pour les grandes
-// collections, ce qui en fait une option moins efficace pour des recherches fréquentes.
+//HashMap : Très rapide (27 ms pour les clés, 42 ms pour les valeurs en Set), grâce à sa gestion optimisée des hachages.
+//LinkedHashMap : Performances proches du HashMap (33 ms pour les valeurs, 50 ms pour les clés), mais un léger surcoût dû à l'ordre d'insertion.
+//TreeMap : Plus lent (15 ms pour les valeurs, 44 ms pour les clés) à cause du tri automatique des éléments.
+//ArrayList : Moins efficace (5066 ms pour les recherches fréquentes), surtout pour de grandes collections.
