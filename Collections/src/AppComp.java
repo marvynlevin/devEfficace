@@ -37,7 +37,7 @@ public class AppComp {
     public static void main(String[] args) throws Exception {
 
         // Nombre d'éléments à sélectionner aléatoirement dans le fichier de mots
-        int nbElements = 100000;
+        int nbElements = 10000;
         // Crée une instance de la classe ListOfWords pour récupérer une liste de mots
         ListOfWords lWords = new ListOfWords();
         // Sélectionne un certain nombre de mots aléatoires dans la liste de mots

@@ -233,7 +233,7 @@ map2.remove(a1); // renvoie 10
 **ArrayDeque:**
 - **File**:
   - **boolean offer(E e)**: ajoute e en fin de queue
-  - **E pull()**: supprime et renvoie l'élément en tête de queue. Si la queue est vide, renvoie null.
+  - **E poll()**: supprime et renvoie l'élément en tête de queue. Si la queue est vide, renvoie null.
 - **Pile**:
   - **void push(E e)**: ajoute en tête de queue.
   - **E pop()**: supprime et renvoie l'élément de tête de queue. Contrairement à pull provoque erreur si queue vide.
