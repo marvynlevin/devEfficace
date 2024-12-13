@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * La classe {@code BinaryTree} représente un arbre binaire où chaque nœud est une instance de la classe {@code BinaryNode}.
  * Elle fournit des méthodes pour ajouter des nœuds, rechercher des valeurs et afficher la structure de l'arbre.

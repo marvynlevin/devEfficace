@@ -157,7 +157,7 @@ class Tree {
      * @param n Le nœud actuel à afficher.
      * @param level Le niveau d'indentation pour l'affichage.
      */
-    public void printNode(Node n,int level) {
+    private void printNode(Node n,int level) {
         for (int i = 0; i < 2 * level; i++) {
             System.out.print(" ");
         }
@@ -166,4 +166,38 @@ class Tree {
             printNode(child, level + 1);
         }
     }
+
+    /**
+     * Affiche la structure de l'arbre en largeur (par niveau).
+     * Chaque niveau est affiché avec une indentation reflétant sa profondeur.
+     */
+    public void printLevel() {
+        if (root == null) {
+            System.out.println("L'arbre est vide.");
+            return;
+        }
+
+        Queue<Node> queue = new LinkedList<>();
+        Map<Node, Integer> levels = new HashMap<>(); // Associe chaque nœud à son niveau.
+        queue.add(root);
+        levels.put(root, 0);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            int level = levels.get(current);
+
+            // Indentation pour refléter le niveau actuel.
+            for (int i = 0; i < 2 * level; i++) {
+                System.out.print(" ");
+            }
+            System.out.println(current.value);
+
+            // Ajout des enfants à la queue avec leur niveau.
+            for (Node child : current.children) {
+                queue.add(child);
+                levels.put(child, level + 1);
+            }
+        }
+    }
+
 }

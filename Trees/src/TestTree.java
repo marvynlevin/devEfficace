@@ -50,6 +50,7 @@ public class TestTree {
         n4 = n4.addChild(51);
 
         tree.print();
+        tree.printLevel();
 
         Node s = tree.contains(n3, root);
         if (s != n3) {
@@ -93,6 +94,19 @@ public class TestTree {
 //       40
 //       41
 //     32
+//       45
+//       46
+//       47
+//         50
+//         51
+
+// 10
+//   21
+//     30
+//     31
+//     32
+//       40
+//       41
 //       45
 //       46
 //       47
