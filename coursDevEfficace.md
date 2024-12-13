@@ -264,7 +264,7 @@ val = q.pop(); // renvoie 2
 
 ### Par le biais de : for
 
-Contrainte: on ne peut pas modifier la collection que l'on parcoure.
+**Contrainte**: on ne peut pas modifier la collection que l'on parcoure.
 
 Exemple :
 
@@ -333,7 +333,7 @@ while (in.hasNext()) {
 }
 ````
 
-Astuce:
+**Astuce** :
 
 ````java
 Map<Integer, Double> map = new HashMap<>();
@@ -388,7 +388,8 @@ class Node {
 }
 ```
 
-Exemple de méthode pour trouver une valeur dans un arbre en Java:
+**Méthode pour trouver une valeur dans un arbre en Java:**
+
 ````java
 boolean contains(Node n, int val) {
     // Si noeud à la valeur souhaitée, on renvoie la valeur.
@@ -406,7 +407,7 @@ boolean contains(Node n, int val) {
 }
 ````
 
-Méthode récursive pour trouver la taille de l'arbre :
+**Méthode récursive pour trouver la taille de l'arbre :**
 
 `````java
 int treeDepth(node n, int level) {
@@ -429,7 +430,7 @@ int treeDepth(node n, int level) {
 }
 `````
 
-Méthode non récursive pour trouver la taille de l'arbre :
+**Méthode non récursive pour trouver la taille de l'arbre :**
 
 ````java
 int treeDepth(Node n) {
@@ -451,7 +452,7 @@ int treeDepth(Node n) {
 }
 ````
 
-Méthode non récursive pour trouver le nombre de feuille dans un arbre :
+**Méthode non récursive pour trouver le nombre de feuille dans un arbre :**
 
 ````java
 int nbNeaves(Node n) {
@@ -515,7 +516,7 @@ public boolean contains(Node n, int val) {
 }
 ````
 
-Méthode pour utiliser un neoud sératatif:
+**Méthode pour utiliser un neoud sératatif:**
 
 ```txt
 // Nouvel arbre.
@@ -574,3 +575,162 @@ public List<Node> getNodesForLevel(Node n, int Level) {
   }
 }
 ````
+
+
+**Méthode pour trouver la taille maximum par hauteur:**
+
+```txt
+        (4)           1
+  (1)   (2)   (5)     3
+(3)(10)(18)(2)  (4)   5
+                (5)   1
+```
+
+Développement inefficace (parcours plusieurs fois l'arbre):
+
+````java
+public int maxWidth(Node n) {
+    int max = 0, width = 0, level = 0;
+    while ((width = nbNdesByLevel(n, 0, level)) > 0) {
+        if (width > max) {
+            max = width;
+        }
+      level++;
+    }
+}
+
+public int nbNodesByLevel(Node n, int currentLevel, int searchLevel) {
+    if (currentLevel == searchLevel) return 1;
+    int nb = 0;
+    for (Node fils : n.children) {
+        nb += nbNodesByLevel(fils, currentLevel+1, searchLevel);
+    }
+    return nb;
+}
+````
+
+Développement efficace (parcours une seule fois l'abre) :
+
+````java
+import java.util.ArrayList;
+import java.util.List;
+
+public int maxWidth(Node n) {
+  int max = 0;
+  List<Integer> nbNodesByLevel = new ArrayList<>();
+  countByLevel(n, 1, nbNodesByLevel);
+  // trouver le maximim dans nbNodesByLevel.
+  return max;
+}
+
+public void countByLevel(Node n, int level, List<Integer>nbNodes) {
+    if (nbNodes.size() < level) {
+        nbNodes.add(1); // rajoute un 1 pour tous les levels.
+    } else {
+        nbNodes.set(level, nbNodes.get(level) + 1);  // on rajoute en + de ceux déjà comptés.
+    }
+    for (Node fils : n.children) {
+        countByLevel(fils, level+1, nbNodes);
+    }
+}
+
+// [1, 3, 5, 1]
+````
+
+### Arbre binaire ordonné
+
+````java
+class Node {
+  Node left;
+  Node rigth;
+  int value;
+
+  public Node(int value) {
+    this.value = value;
+    left = null;
+    rigth = null;
+  }
+
+
+}
+````
+
+```txt
+        (4)           
+  (12)      (28)
+(1)  (15)
+    (13)
+```
+
+**Méthode d'insertion :**
+
+````java
+public void insert(int value) {
+  insertRecur(root, value);
+}
+
+private void insertRecur(Node n, int value) {
+    // Si arbre vide on met au root.
+  if (n == null) {
+    root = new Node(value);
+  } else if (value <= n.value) {
+    // Si il y a un noeud gauche.
+    if (n.left != null) {
+      insertRecur(n.left, value);
+    } else {
+      n.left = new Node(value);
+    }
+    // else if n'est pas forcément nécessaire.
+  } else if (value > n.value) {
+    // Si il y a un noeud droit.
+    if (n.right != null) {
+        insertRecur(n.rigth, value);
+    } else {
+        n.rigth = new Node(value);
+    }
+  }
+}
+
+public void insertIter(int value) {
+    Node newNode = new Node(value);
+    // Si arbre vide on met au root.
+    if (root == null) {
+        root = newNode;
+        return;
+    }
+    // On se met à la racine.
+    Node n = root;
+    Node father = null; // pour pouvoir faire marche arrière.
+    int lastDirection = -1; // 1: gauche 2: droite
+    while (n != null) {
+        father = n;
+        if (value <= n.value) {
+            n = n.left;
+            lastDirection = 1;
+        } else {
+            n = n.rigth;
+            lastDirection = 2;
+        }
+    }
+    if (lastDirection == 1) father.left = newNode;
+    if (lastDirection == 2) father.rigth = newNode;
+}
+````
+
+**Méthode de recherche dans un arbre binaire ordonné :**
+
+````java
+public Node search(int value) {
+    Node n = root;
+    while ((n != null) && (n.value != value)) {
+        if (value <= n.value) {
+            n = n.left;
+        } else {
+            n = n.rigth;
+        }
+    }
+    return n; // return nœud si trouvé ou null si valeur non trouvée.
+}
+````
+
+**Intêret de ce type d'arbre** : recherche beaucoup plus rapide.
