@@ -24,13 +24,9 @@ public class HashOfWords {
         // On essaie de récuperer les mots dans le file french_words.txt
         try (BufferedReader br = new BufferedReader(new FileReader("french_words.txt"))) {
             String line;
-//            int key = 0;
-            // Lecture ligne par ligne
             while ((line = br.readLine()) != null) {
                 // Ajoutez un couple {clé, valeur}
-//                hashMap.put(key, line);
                 hashMap.put(line.hashCode(), line);
-//                key++;
             }
         } catch (IOException e) {
             System.err.println("Erreur lors de la lecture du fichier : " + e.getMessage());

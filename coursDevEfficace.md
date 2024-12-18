@@ -533,6 +533,7 @@ public boolean contains(Node n, int val) {
 [1][3][4][///][2][8][10][///][12]
 ````
 
+**Méthodes pour obtenir nombre de noeuds par level avec la séparation :**
 ````java
 import java.util.ArrayDeque;
 import java.util.ArrayList;

@@ -44,7 +44,7 @@ public class HashOfWordsComp {
         try (BufferedReader br = new BufferedReader(new FileReader("french_words.txt"))) {
             String line;
             while ((line = br.readLine()) != null) {
-                map.put(line.hashCode(), line); // Utilise le hashCode du mot comme clé et line comme valeur
+                map.put(line.hashCode(), line);
             }
         }
     }
@@ -71,6 +71,15 @@ public class HashOfWordsComp {
 
             result.add(word + (found ? " YES" : " NO"));
         }
+
+        // OU
+
+//        for (String word :words) {
+//            if(map.containsValue(word))
+//                result.add(word+" YES");
+//            else
+//                result.add(word+" NO");
+//        }
 
         return result;
     }
@@ -105,6 +114,18 @@ public class HashOfWordsComp {
             result.add(word + (found ? " YES" : " NO"));
         }
 
+        // OU
+
+//        HashSet<String> valueSet = new HashSet<String>(map.values());
+//
+//        for (String word: words) {
+//            if (valueSet.contains(word)) {
+//                result.add(word+" YES");
+//            } else {
+//                result.add(word+" NO");
+//            }
+//        }
+
         return result;
     }
 
@@ -131,6 +152,16 @@ public class HashOfWordsComp {
 
             result.add(word + (found ? " YES" : " NO"));
         }
+
+        // OU
+
+//        for (String word:words) {
+//            if(map.containsKey(word.hashCode()))
+//                result.add(word+" YES");
+//            else
+//                result.add(word+" NO");
+//
+//        }
 
         return result;
     }

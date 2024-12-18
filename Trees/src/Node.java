@@ -37,7 +37,7 @@ class Node {
      */
     public Node addChild(int value) {
         Node newNode = new Node(value);
-        this.children.add(newNode); // Ajoute le nouvel enfant à la liste des enfants.
+        children.add(newNode); // Ajoute le nouvel enfant à la liste des enfants.
         return newNode;
     }
 
@@ -62,7 +62,7 @@ class Node {
         if (index < 0 || index >= this.children.size()) {
             return null; // Retourne null si l'index est hors limites.
         }
-        return this.children.get(index); // Retourne l'enfant à l'index spécifié.
+        return children.get(index); // Retourne l'enfant à l'index spécifié.
     }
 }
 

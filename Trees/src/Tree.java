@@ -44,7 +44,7 @@ class Tree {
             root = newNode; // newNode devient le nœud root.
             nbNodes++;
             return newNode;
-        } else if (contains(parent, root) != null) {
+        } else if (contains(parent, root) == null) {
             Node newNode = parent.addChild(value);
             nbNodes++;
             return newNode;
@@ -199,5 +199,4 @@ class Tree {
             }
         }
     }
-
 }
